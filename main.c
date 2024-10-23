@@ -1,27 +1,16 @@
-#include "algorithme.h"
+#include "manip.h"
 
 int main() {
-    algo* seq = init_algo();
-    add_algo(seq, U, 1);
-    add_algo(seq, F, 2);
-    add_algo(seq, R, 3);
-    add_algo(seq, L, 4);
-    add_algo(seq, B, 5);
-    add_algo(seq, D, 6);
-    add_algo(seq, U, 7);
-    add_algo(seq, F, 8);
-    add_algo(seq, R, 9);
-    add_algo(seq, L, 10);
-    add_algo(seq, B, 11);
-    add_algo(seq, D, 12);
-    afficher_algo(seq);
-    afficher_algo_brut(seq);
-    free_algo(seq);
+    srand(time(NULL));
 
-    algo* seq2 = import_algo("U1 F2 R3 L3 B F2 L2 R");
-    afficher_algo(seq2);
-    afficher_algo_brut(seq2);
-    free_algo(seq2);
-    
+    rubik* cube = init_cube();
+    afficher_cube_couleur(cube);
+    algo* seq = scramble(3,0);
+    afficher_algo(seq);
+    ex_algorithme(cube,seq);
+    afficher_cube_couleur(cube);
+    free_algo(seq);
+    free_cube(cube);
+
     return 0;
 }
